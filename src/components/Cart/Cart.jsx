@@ -9,16 +9,19 @@ const Cart = ({ selectedCourses, remaining, totalCredit }) => {
   return (
     <div>
       <h3 style={{ color: '#2F80ED' }}>Credit Hour Remaining {remaining} hr</h3>
+      <hr />
 
       <h4>Course Name</h4>
       {selectedCourses.map((course) => (
         // eslint-disable-next-line react/jsx-key
-        // <li key={course.id}>{course.name}</li>
+ 
         <li key={course.id} style={{ listStyleType: "decimal", textAlign: 'left' }}>{course.name}
         </li>
         
       ))}
+      <hr />
       <h3>Total Credit Hour : {totalCredit}</h3>
+      <hr />
     </div>
   );
 };

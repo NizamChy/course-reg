@@ -4,7 +4,7 @@
     "name": "Introduction to C Programming",
     "description": "Learn the basics of C programming language.",
     "price": 49.99,
-    "credit_hours": 3,
+    "credit_hours": 5,
     "image": "https://i.ibb.co/fFcrQCq/image-11.png"
   },
   {
@@ -20,7 +20,7 @@
     "name": "Introduction to C++ for DSA",
     "description": "Master C++ programming for Data Structures and Algorithms.",
     "price": 69.99,
-    "credit_hours": 4,
+    "credit_hours": 3,
     "image": "https://i.ibb.co/0cVPZcs/image-13.png"
   },
   {
@@ -36,7 +36,7 @@
     "name": "Introduction to OOP Python",
     "description": "Discover Object-Oriented Programming using Python.",
     "price": 59.99,
-    "credit_hours": 4,
+    "credit_hours": 5,
     "image": "https://i.ibb.co/vPFYdcV/image-15.png"
   },
   {
@@ -52,7 +52,7 @@
     "name": "AWS, Cloud Computing",
     "description": "Gain expertise in Amazon Web Services and cloud computing.",
     "price": 89.99,
-    "credit_hours": 5,
+    "credit_hours": 2,
     "image": "https://i.ibb.co/59jGQSN/image-17.png"
   },
   {

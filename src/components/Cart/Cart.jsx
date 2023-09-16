@@ -8,7 +8,8 @@ const Cart = ({ selectedCourses, remaining, totalCredit }) => {
   console.log(selectedCourses);
   return (
     <div>
-      <h3>Credit Hour Remaining {remaining} hr</h3>
+      <h3 style={{ color: '#2F80ED' }}>Credit Hour Remaining {remaining} hr</h3>
+
       <h4>Course Name</h4>
       {selectedCourses.map((course) => (
         // eslint-disable-next-line react/jsx-key

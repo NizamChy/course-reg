@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Introduction to C Programming",
+    "description": "Learn the basics of C programming language.",
+    "price": 49.99,
+    "credit_hours": 3,
+    "image": "https://i.ibb.co/fFcrQCq/image-11.png"
+  },
+  {
+    "id": 2,
+    "name": "Introduction to Computer Algorithms",
+    "description": "Explore fundamental algorithms and data structures.",
+    "price": 59.99,
+    "credit_hours": 4,
+    "image": "https://i.ibb.co/k667Dk0/image-12.png"
+  },
+  {
+    "id": 3,
+    "name": "Introduction to C++ for DSA",
+    "description": "Master C++ programming for Data Structures and Algorithms.",
+    "price": 69.99,
+    "credit_hours": 4,
+    "image": "https://i.ibb.co/0cVPZcs/image-13.png"
+  },
+  {
+    "id": 4,
+    "name": "Basic Data Structures",
+    "description": "Learn essential data structures such as arrays, linked lists, and trees.",
+    "price": 49.99,
+    "credit_hours": 3,
+    "image": "https://i.ibb.co/kg1tQDT/image-14.png"
+  },
+  {
+    "id": 5,
+    "name": "Introduction to OOP Python",
+    "description": "Discover Object-Oriented Programming using Python.",
+    "price": 59.99,
+    "credit_hours": 4,
+    "image": "https://i.ibb.co/vPFYdcV/image-15.png"
+  },
+  {
+    "id": 6,
+    "name": "Software Engineering",
+    "description": "Learn the principles and practices of software engineering.",
+    "price": 79.99,
+    "credit_hours": 5,
+    "image": "https://i.ibb.co/xXJ1DDq/image-16.png"
+  },
+  {
+    "id": 7,
+    "name": "AWS, Cloud Computing",
+    "description": "Gain expertise in Amazon Web Services and cloud computing.",
+    "price": 89.99,
+    "credit_hours": 5,
+    "image": "https://i.ibb.co/59jGQSN/image-17.png"
+  },
+  {
+    "id": 8,
+    "name": "Database (MySQL)",
+    "description": "Learn database management using MySQL.",
+    "price": 69.99,
+    "credit_hours": 4,
+    "image": "https://i.ibb.co/p2FV6c0/image-18.png"
+  },
+  {
+    "id": 9,
+    "name": "Problem-Solving Part",
+    "description": "Enhance your problem-solving skills in various domains.",
+    "price": 49.99,
+    "credit_hours": 3,
+    "image": "https://i.ibb.co/9GC5MYK/image-19.png"
+  }
+]

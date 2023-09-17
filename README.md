@@ -35,20 +35,6 @@ State management is a crucial aspect of this project, and it is handled using Re
 - It displays the user's selected courses, the remaining credit hours, and the total credit hours.
 
 
-
-## Requirements
-
-- **Github**: This project is hosted on GitHub. You can find the code and contribute on the [GitHub repository](https://github.com/programming-hero-web-course2/my-course-roster-NizamChy).
-
-## Repository Links
-
-- **Server Repository**: [GitHub Repository Link](https://github.com/programming-hero-web-course2/my-course-roster-NizamChy)
-
-
-## Live Website
-
-You can access the live version of this project on Netlify: [Live Website Link](https://starlit-mandazi-93ad56.netlify.app/)
-
 ## Used Technologies
 
 ### Front End

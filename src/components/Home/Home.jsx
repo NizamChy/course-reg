@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Cart from "../Cart/Cart";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   const [allCourses, setAllCourses] = useState([]);
@@ -16,20 +18,20 @@ const Home = () => {
   }, []);
 
   const handleSelectCourse = (course) => {
-    const isExist = selectedCourses.find((item) => item.id == course.id);
+    const isExist = selectedCourses.find((item) => item.id === course.id);
     let count = course.credit_hours;
 
     if (isExist) {
-      alert("Already selected");
+      toast.warning("Already selected");
     } else {
       selectedCourses.forEach((item) => {
         count += item.credit_hours;
       });
-      
+
       const totalRemaining = 20 - count;
 
       if (count > 20) {
-        return alert("Reached the maximum limit of credit hours!");
+        toast.error("Reached the maximum limit of credit hours!");
       } else {
         setTotalCredit(count);
         setRemaining(totalRemaining);
@@ -38,27 +40,22 @@ const Home = () => {
     }
   };
 
-  console.log(selectedCourses);
-
   return (
     <div className="container">
       <h2>Course Registration</h2>
       <div className="home-container">
         <div className="card-container">
           {allCourses.map((course) => (
-            // eslint-disable-next-line react/jsx-key
             <div key={course.id} className="card">
               <div className="card-img">
                 <img className="photo" src={course.image} alt="" />
-
                 <h3>{course.name}</h3>
                 <p>
                   <small>{course.description}</small>
                 </p>
                 <div className="info">
-                  
-                  <p>$ Price : {course.price}</p>
-                  <p>Credit : {course.credit_hours}hr</p>
+                  <p>$ Price: {course.price}</p>
+                  <p>Credit: {course.credit_hours}hr</p>
                 </div>
                 <button
                   onClick={() => handleSelectCourse(course)}
@@ -79,6 +76,7 @@ const Home = () => {
           ></Cart>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

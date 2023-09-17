@@ -25,7 +25,7 @@ const Home = () => {
       selectedCourses.forEach((item) => {
         count += item.credit_hours;
       });
-      // console.log(count);
+      
       const totalRemaining = 20 - count;
 
       if (count > 20) {
@@ -56,7 +56,7 @@ const Home = () => {
                   <small>{course.description}</small>
                 </p>
                 <div className="info">
-                  {/* <img className='icons' src="https://i.ibb.co/Fh8cnD9/image-20.png" alt="" /> */}
+                  
                   <p>$ Price : {course.price}</p>
                   <p>Credit : {course.credit_hours}hr</p>
                 </div>

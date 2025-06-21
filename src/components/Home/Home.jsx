@@ -1,82 +1,140 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Cart from "../Cart/Cart";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const [allCourses, setAllCourses] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [remaining, setRemaining] = useState(20);
   const [totalCredit, setTotalCredit] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("./data.json")
-      .then((res) => res.json())
-      .then((data) => setAllCourses(data));
+    const fetchData = async () => {
+      try {
+        const response = await fetch("./data.json");
+        const data = await response.json();
+        setAllCourses(data);
+      } catch (error) {
+        toast.error("Failed to load courses");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleSelectCourse = (course) => {
     const isExist = selectedCourses.find((item) => item.id === course.id);
-    let count = course.credit_hours;
 
     if (isExist) {
-      toast.warning("Already selected");
-    } else {
-      selectedCourses.forEach((item) => {
-        count += item.credit_hours;
-      });
-
-      const totalRemaining = 20 - count;
-
-      if (count > 20) {
-        toast.error("Reached the maximum limit of credit hours!");
-      } else {
-        setTotalCredit(count);
-        setRemaining(totalRemaining);
-        setSelectedCourses([...selectedCourses, course]);
-      }
+      toast.warning("This course is already selected");
+      return;
     }
+
+    const newTotalCredit = totalCredit + course.credit_hours;
+    const newRemaining = remaining - course.credit_hours;
+
+    if (newTotalCredit > 20) {
+      toast.error("You've reached the maximum credit hours limit (20 hrs)");
+      return;
+    }
+
+    setTotalCredit(newTotalCredit);
+    setRemaining(newRemaining);
+    setTotalPrice(totalPrice + course.price);
+    setSelectedCourses([...selectedCourses, course]);
+    toast.success("Course added successfully");
+  };
+
+  const handleRemoveCourse = (courseId) => {
+    const courseToRemove = selectedCourses.find(
+      (course) => course.id === courseId
+    );
+    if (!courseToRemove) return;
+
+    setTotalCredit(totalCredit - courseToRemove.credit_hours);
+    setRemaining(remaining + courseToRemove.credit_hours);
+    setTotalPrice(totalPrice - courseToRemove.price);
+    setSelectedCourses(
+      selectedCourses.filter((course) => course.id !== courseId)
+    );
+    toast.info("Course removed");
   };
 
   return (
     <div className="container">
-      <h2>Course Registration</h2>
-      <div className="home-container">
-        <div className="card-container">
-          {allCourses.map((course) => (
-            <div key={course.id} className="card">
-              <div className="card-img">
-                <img className="photo" src={course.image} alt="" />
-                <h3>{course.name}</h3>
-                <p>
-                  <small>{course.description}</small>
-                </p>
-                <div className="info">
-                  <p>$ Price: {course.price}</p>
-                  <p>Credit: {course.credit_hours}hr</p>
-                </div>
-                <button
-                  onClick={() => handleSelectCourse(course)}
-                  className="card-btn "
-                >
-                  Select
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
-        <div className="cart">
+      <header className="header">
+        <h1>Course Registration</h1>
+        <p>Select your courses for the semester</p>
+      </header>
+
+      <div className="home-container">
+        <main className="card-container">
+          {loading ? (
+            <div className="loading-spinner">Loading courses...</div>
+          ) : (
+            allCourses.map((course) => (
+              <div key={course.id} className="card">
+                <div className="card-img">
+                  <img className="photo" src={course.image} alt={course.name} />
+                </div>
+                <div className="card-content">
+                  <h3>{course.name}</h3>
+                  <p className="description">{course.description}</p>
+                  <div className="info">
+                    <p>
+                      <strong>Price:</strong> ${course.price.toFixed(2)}
+                    </p>
+                    <p>
+                      <strong>Credit:</strong> {course.credit_hours}hrs
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleSelectCourse(course)}
+                    className="card-btn"
+                    disabled={
+                      remaining < course.credit_hours &&
+                      !selectedCourses.some((c) => c.id === course.id)
+                    }
+                  >
+                    {selectedCourses.some((c) => c.id === course.id)
+                      ? "Selected"
+                      : "Select"}
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </main>
+
+        <aside className="cart-container">
           <Cart
             selectedCourses={selectedCourses}
             remaining={remaining}
             totalCredit={totalCredit}
-          ></Cart>
-        </div>
+            totalPrice={totalPrice}
+            onRemoveCourse={handleRemoveCourse}
+          />
+        </aside>
       </div>
-      <ToastContainer />
     </div>
   );
 };

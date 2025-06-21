@@ -1,0 +1,114 @@
+.cart {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+}
+
+.cart-header {
+  margin-bottom: 15px;
+}
+
+.cart-header h3 {
+  color: #2f80ed;
+  margin: 0 0 10px;
+}
+
+.remaining-hours {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.icon {
+  color: #2f80ed;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.course-list h4 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.empty-message {
+  color: #888;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.course-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-name {
+  flex-grow: 1;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.course-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-credit {
+  background: #f0f7ff;
+  color: #2f80ed;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: #ff0000;
+}
+
+.total-credit h4,
+.total-price h4 {
+  margin: 0;
+  color: #333;
+}
+
+.total-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #27ae60;
+  font-weight: 600;
+}

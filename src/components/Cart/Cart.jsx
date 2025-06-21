@@ -1,27 +1,61 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+import { FaTrash, FaClock, FaDollarSign } from "react-icons/fa";
 
-// eslint-disable-next-line react/prop-types
-const Cart = ({ selectedCourses, remaining, totalCredit }) => {
-  // eslint-disable-next-line react/prop-types
-  console.log(selectedCourses);
+const Cart = ({
+  selectedCourses,
+  remaining,
+  totalCredit,
+  totalPrice,
+  onRemoveCourse,
+}) => {
   return (
-    <div>
-      <h3 style={{ color: '#2F80ED' }}>Credit Hour Remaining {remaining} hr</h3>
-      <hr />
+    <div className="cart">
+      <div className="cart-header">
+        <h3>Course Summary</h3>
+        <div className="remaining-hours">
+          <FaClock className="icon" />
+          <span>Credit Hour Remaining: {remaining} hr</span>
+        </div>
+      </div>
 
-      <h4>Course Name</h4>
-      {selectedCourses.map((course) => (
-        // eslint-disable-next-line react/jsx-key
- 
-        <li key={course.id} style={{ listStyleType: "decimal", textAlign: 'left' }}>{course.name}
-        </li>
-        
-      ))}
-      <hr />
-      <h3>Total Credit Hour : {totalCredit}</h3>
-      <hr />
+      <hr className="divider" />
+
+      <div className="course-list">
+        <h4>Selected Courses ({selectedCourses.length})</h4>
+        {selectedCourses.length === 0 ? (
+          <p className="empty-message">No courses selected yet</p>
+        ) : (
+          <ul>
+            {selectedCourses.map((course) => (
+              <li key={course.id} className="course-item">
+                <span className="course-name">{course.name}</span>
+                <div className="course-actions">
+                  <span className="course-credit">{course.credit_hours}hr</span>
+                  <button
+                    onClick={() => onRemoveCourse(course.id)}
+                    className="remove-btn"
+                    aria-label={`Remove ${course.name}`}
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <hr className="divider" />
+
+      <div className="total-credit">
+        <h4>Total Credit Hour: {totalCredit}hr</h4>
+      </div>
+
+      <hr className="divider" />
+
+      <div className="total-price">
+        <FaDollarSign className="icon" />
+        <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
+      </div>
     </div>
   );
 };

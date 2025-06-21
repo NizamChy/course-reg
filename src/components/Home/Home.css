@@ -1,35 +1,146 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: #2f80ed;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Card Container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
 .card {
-  width: 250px;
-  height: 400px;
-  border: 1px solid gray;
-  border-radius: 8px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-img {
+  height: 160px;
+  overflow: hidden;
 }
 
 .photo {
-  width: 250px;
-}
-.info {
-  display: flex;
-  justify-content: space-evenly;
-}
-.icons{
-  width: 20px;
-  height: 20px;
-}
-.home-container {
-  display: flex;
-}
-.card-container {
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-.card-btn {
-  width: 220px;
-  height: 43px;
-  border-radius: 8px;
-  border: 1px solid #2F80ED;
-  background: #2F80ED;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
+.card:hover .photo {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  margin: 0 0 10px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.info p {
+  margin: 0;
+  color: #555;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2f80ed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+  background-color: #1a68d1;
+}
+
+.card-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Cart Container */
+.cart-container {
+  width: 100%;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsive Layout */
+@media (min-width: 992px) {
+  .home-container {
+    flex-direction: row;
+  }
+
+  .card-container {
+    width: 75%;
+  }
+
+  .cart-container {
+    width: 25%;
+    padding-left: 20px;
+  }
+}
